@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import PresentAll from "../Lab1,2/PresentAll";
 
 const user = {
     name: "John Doe",

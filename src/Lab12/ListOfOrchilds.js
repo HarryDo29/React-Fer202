@@ -1,4 +1,4 @@
-export const orchids = [
+const orchids = [
   {
     id: 1,
     name: "Phalaenopsis",
@@ -176,3 +176,5 @@ export const orchids = [
     category: "Epidendrum"
   }
 ];
+
+export default orchids;

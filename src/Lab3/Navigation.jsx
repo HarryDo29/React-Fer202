@@ -1,29 +1,31 @@
-import {Container, Navbar, Nav, Button } from "react-bootstrap";
+import { Navbar, Nav, Button } from "react-bootstrap";
 import useAuth from "./useAuth";
+import { NavLink as RouterNavLink } from "react-router-dom";
 
 
 export default function Navigation() {
     const { isAuthenticated, toggleLogin, toggleLogout } = useAuth();
 
     return(
-        <Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Text >{isAuthenticated.status ? 
-                    "Welcome, " + isAuthenticated.user.name : 
-                    "Please log in"}
-                </Navbar.Text>
-                {/* <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#features">List</Nav.Link>
-                    <Nav.Link href="#pricing">Pricing</Nav.Link>
-                </Nav> */}
-                <Nav className="ms-auto">
-                    {isAuthenticated.status ? 
-                        <Button variant="outline-light" onClick={() => toggleLogout()}>Logout</Button>
-                        :<Button variant="outline-light" onClick={() => toggleLogin()}>Login</Button>
-                    }   
-                </Nav>
-            </Container>
+        <Navbar bg="dark" variant="dark" style={{width: '100%', padding: "10px"}}
+        className="d-flex align-items-center">
+            {/* Left */}
+            <Navbar.Brand className="me-auto">Orchids List</Navbar.Brand>
+
+            {/* Center */}
+            <Nav className="mx-auto">
+                <Nav.Link as={RouterNavLink} to="/">Index</Nav.Link>
+                <Nav.Link as={RouterNavLink} to="/naturals">Naturals</Nav.Link>
+                <Nav.Link as={RouterNavLink} to="/contact">Contact</Nav.Link>
+            </Nav>
+
+            {/* Right */}
+            <Nav className="ms-auto">
+                {isAuthenticated.status ? 
+                    <Button variant="outline-light" onClick={() => toggleLogout()}>Logout</Button>
+                    :<Button variant="outline-light" onClick={() => toggleLogin()}>Login</Button>
+                }   
+            </Nav>
         </Navbar>
     )
 }
