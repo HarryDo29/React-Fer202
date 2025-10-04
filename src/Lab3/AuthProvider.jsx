@@ -8,7 +8,7 @@ const user = {
 
 const AuthContext = React.createContext(null);
 
-export default function AuthProvider({ children }) {
+export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState({
         status: true,
         user: user
@@ -43,4 +43,4 @@ export default function AuthProvider({ children }) {
     );
 }
 
-export { AuthContext };
+export default AuthContext;

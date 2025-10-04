@@ -1,9 +1,9 @@
 import Presentation from "./Presentation";
-import orchids from "./ListOfOrchilds"; 
+// import orchids from "./ListOfOrchilds"; 
 import { Container, Button } from 'react-bootstrap';
 import { useState } from "react";
 
-export default function PresentAll(){
+const PresentAll = ({orchidsList}) => {
     const [mode, setMode] = useState(true);
 
     return(
@@ -23,7 +23,7 @@ export default function PresentAll(){
                     <h1 className="mx-auto">List of Orchids</h1>
                 </div>
                 <div className="row row-cols-4">
-                    {orchids.map(orchid => (
+                    {   orchidsList.map(orchid => (
                         <div className="col" key={orchid.id}>
                             <Presentation orchid={orchid} />
                         </div>
@@ -33,3 +33,5 @@ export default function PresentAll(){
         </Container>
     );
 }
+
+export default PresentAll;

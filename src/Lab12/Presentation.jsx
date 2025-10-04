@@ -1,7 +1,7 @@
 import { Badge, Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-export default function Presentation({orchid}) {
+const Presentation = ({orchid}) => {
     const navgate = useNavigate();
     
     return (
@@ -28,3 +28,5 @@ export default function Presentation({orchid}) {
         </div>
     );
 }
+
+export default Presentation;

@@ -3,14 +3,16 @@ import useAuth from "./useAuth";
 import { NavLink as RouterNavLink } from "react-router-dom";
 
 
-export default function Navigation() {
+const Navigation = () => {
     const { isAuthenticated, toggleLogin, toggleLogout } = useAuth();
 
     return(
         <Navbar bg="dark" variant="dark" style={{width: '100%', padding: "10px"}}
         className="d-flex align-items-center">
             {/* Left */}
-            <Navbar.Brand className="me-auto">Orchids List</Navbar.Brand>
+            <Navbar.Brand className="me-auto">
+                {isAuthenticated.status ? `Welcome, ${isAuthenticated.user.name}` : 'Please log in'}
+            </Navbar.Brand>
 
             {/* Center */}
             <Nav className="mx-auto">
@@ -29,3 +31,5 @@ export default function Navigation() {
         </Navbar>
     )
 }
+
+export default Navigation;
