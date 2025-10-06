@@ -2,7 +2,7 @@ import { useContext } from "react";
 import AuthContext from "./AuthProvider";
 
 const useAuth = () => {
-    const { isAuthenticated, login, logout } = useContext(AuthContext);
+    const { isAuthenticated, login, logout , user } = useContext(AuthContext);
 
     const toggleLogin = () => {
         login();
@@ -12,7 +12,7 @@ const useAuth = () => {
         logout();
     }
 
-    return { isAuthenticated, toggleLogin, toggleLogout };
+    return { isAuthenticated, toggleLogin, toggleLogout , user };
 }
 
 export default useAuth;

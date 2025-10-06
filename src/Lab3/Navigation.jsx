@@ -4,27 +4,28 @@ import { NavLink as RouterNavLink } from "react-router-dom";
 
 
 const Navigation = () => {
-    const { isAuthenticated, toggleLogin, toggleLogout } = useAuth();
-    const { status, user } = isAuthenticated;
+    const { isAuthenticated, toggleLogin, toggleLogout , user } = useAuth();
 
     return(
-        <Navbar bg="dark" variant="dark" style={{width: '100%', padding: "10px"}}
-        className="d-flex align-items-center">
+        <Navbar bg="dark" variant="dark" expand="lg" className="w-full px-4" style={{padding: "10px"}}>
             {/* Left */}
-            <Navbar.Brand className="me-auto">
-                {status ? `Welcome, ${user.name}` : 'Please log in'}
+            <Navbar.Brand className="me-auto" style={{ fontWeight: 'bold', fontSize: '24px' }}>
+                Orchid List
             </Navbar.Brand>
 
             {/* Center */}
-            <Nav className="mx-auto">
-                <Nav.Link as={RouterNavLink} to="/">Index</Nav.Link>
-                <Nav.Link as={RouterNavLink} to="/naturals">Naturals</Nav.Link>
-                <Nav.Link as={RouterNavLink} to="/contact">Contact</Nav.Link>
+            <Nav className="flex-1 justify-center">
+                <Nav.Link as={RouterNavLink} to="/" style={{ color: 'white', fontWeight: 'bold' }}>Index</Nav.Link>
+                <Nav.Link as={RouterNavLink} to="/naturals" style={{ color: 'white', fontWeight: 'bold' }}>Naturals</Nav.Link>
+                <Nav.Link as={RouterNavLink} to="/contact" style={{ color: 'white', fontWeight: 'bold' }}>Contact</Nav.Link>
             </Nav>
 
             {/* Right */}
             <Nav className="ms-auto">
-                {status ? 
+                <Navbar.Text className="px-3" style={{ color: 'white', fontWeight: 'bold' }}>
+                    {isAuthenticated ? `Welcome, ${user.name}` : 'Please log in'}
+                </Navbar.Text>
+                {isAuthenticated ? 
                     <Button variant="outline-light" onClick={() => toggleLogout()}>Logout</Button>
                     :<Button variant="outline-light" onClick={() => toggleLogin()}>Login</Button>
                 }   

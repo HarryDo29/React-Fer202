@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import './App.css'
+// import './App.css'
 import { AuthProvider } from './Lab3/AuthProvider'
 import Navigation from './Lab3/Navigation'
 import PresentAll from './Lab12/PresentAll'
@@ -12,8 +12,8 @@ import orchids from './Lab12/ListOfOrchilds'
 function App() {
   return (
     <AuthProvider>
-      <Container className="w-150 p-0" >
         <Navigation />
+      <Container className="w-150 p-0" >
         <Routes>
           <Route path="/" element={<PresentAll orchidsList={orchids} />} />
           <Route path="/detail/:id" element={<Detail />} />

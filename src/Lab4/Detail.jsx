@@ -1,19 +1,12 @@
 import orchids from "../Lab12/ListOfOrchilds";
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Badge, Button } from 'react-bootstrap';
 
 const Detail = () => {
     console.log(orchids);
 
     const { id } = useParams();
-    const [orchild, setOrchild] = useState(null);
-    useEffect(() => {
-        const foundOrchild = orchids.find((orchild) => orchild.id === parseInt(id));
-        console.log(foundOrchild);
-        setOrchild(foundOrchild);
-        console.log(orchild);
-    }, [id]);
+    const orchild = orchids.find(o => o.id === parseInt(id)); 
     
     
 
