@@ -9,10 +9,7 @@ const user = {
 const AuthContext = React.createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState({
-        status: true,
-        user: user
-    });
+    const [isAuthenticated, setIsAuthenticated] = useState({});
 
     const login = () => {
         setIsAuthenticated({ status: true, user: user });
@@ -28,9 +25,19 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const storedAuth = localStorage.getItem("isAuthenticated");
+        console.log(storedAuth);
+        
+        // console.log("Set local storage:");
+        
         if (storedAuth) {
-            localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+            // localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+            setIsAuthenticated(JSON.parse(storedAuth));
         }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
+        console.log("Updated local storage:", isAuthenticated);
     }, [isAuthenticated]);
 
     // const toggle = () => {

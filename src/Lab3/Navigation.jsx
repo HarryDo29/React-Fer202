@@ -5,13 +5,14 @@ import { NavLink as RouterNavLink } from "react-router-dom";
 
 const Navigation = () => {
     const { isAuthenticated, toggleLogin, toggleLogout } = useAuth();
+    const { status, user } = isAuthenticated;
 
     return(
         <Navbar bg="dark" variant="dark" style={{width: '100%', padding: "10px"}}
         className="d-flex align-items-center">
             {/* Left */}
             <Navbar.Brand className="me-auto">
-                {isAuthenticated.status ? `Welcome, ${isAuthenticated.user.name}` : 'Please log in'}
+                {status ? `Welcome, ${user.name}` : 'Please log in'}
             </Navbar.Brand>
 
             {/* Center */}
@@ -23,7 +24,7 @@ const Navigation = () => {
 
             {/* Right */}
             <Nav className="ms-auto">
-                {isAuthenticated.status ? 
+                {status ? 
                     <Button variant="outline-light" onClick={() => toggleLogout()}>Logout</Button>
                     :<Button variant="outline-light" onClick={() => toggleLogin()}>Login</Button>
                 }   
