@@ -27,6 +27,17 @@ export const addNewOrchild = async (orchid) => {
     }
 }
 
+export const updateOrchild = async (id, updatedOrchid) => {
+    try {
+        console.log("update: ", id, updatedOrchid);
+        const response = await orchildsInstance.put(`/orchilds/${id}`, updatedOrchid);
+        return response.data;
+    } catch (error) {
+        console.error(`Error updating orchid with id: ${id}:`, error);
+        throw error;
+    }
+}
+
 export const deleteOrchild = async (id) => {
     try {
         console.log("remove: ", id);
