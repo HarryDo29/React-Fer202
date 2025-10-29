@@ -1,9 +1,21 @@
 import { Badge, Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../Lab3/useAuth";
+import { deleteOrchild } from "./orchildsApi";
 
-const Presentation = ({orchid}) => {
+const Presentation = ({orchid, setOrchids}) => {
     const navgate = useNavigate();
-    
+    const {isAuthenticated, user} = useAuth();
+
+    const handleRemove = async (id) => {
+        try {
+            await deleteOrchild(id);
+            setOrchids((prevOrchids) => prevOrchids.filter((orchid) => orchid.id !== id));
+        } catch (error) {
+            console.error("Error removing orchid:", error);
+        }
+    }
+
     return (
         <div className="mb-4">
             <Card className="mb-4" style={{ width: '18rem', margin: 'auto', padding: '15px' }}>
@@ -18,11 +30,19 @@ const Presentation = ({orchid}) => {
                         <strong>Color: </strong> {orchid.color} <br />
                         <strong>Category: </strong> {orchid.category} <br />
                     </Card.Text>
-                    <Button variant="danger"
+                    <Button variant="danger" className="m-1"
                         style={{ width: '100%' }}
                         onClick={() => { navgate(`/detail/${orchid.id}`) }}>
                         View details
                     </Button>
+
+                    {isAuthenticated && user.isAdmin === true && (
+                        <Button variant="secondary" className="m-1"
+                            style={{ width: '100%' }}
+                            onClick={() => { handleRemove(orchid.id) }}>
+                            Loại bỏ
+                        </Button>
+                    )}
                 </Card.Body>
             </Card>
         </div>

@@ -1,11 +1,15 @@
 import { Navbar, Nav, Button } from "react-bootstrap";
 import useAuth from "./useAuth";
-import { NavLink as RouterNavLink } from "react-router-dom";
+import { NavLink as RouterNavLink, useNavigate } from "react-router-dom";
 
 
 const Navigation = () => {
-    const { isAuthenticated, toggleLogin, toggleLogout , user } = useAuth();
+    const { isAuthenticated, toggleLogout , user } = useAuth();
+    const navigate = useNavigate();
 
+    const navToLogin = () => {
+        navigate('/login');
+    }
     return(
         <Navbar bg="dark" variant="dark" expand="lg" className="w-full px-4" style={{padding: "10px"}}>
             {/* Left */}
@@ -23,11 +27,11 @@ const Navigation = () => {
             {/* Right */}
             <Nav className="ms-auto">
                 <Navbar.Text className="px-3" style={{ color: 'white', fontWeight: 'bold' }}>
-                    {isAuthenticated ? `Welcome, ${user.name}` : 'Please log in'}
+                    {isAuthenticated ? `Welcome, ${user.fullName}` : 'Please log in'}
                 </Navbar.Text>
                 {isAuthenticated ? 
                     <Button variant="outline-light" onClick={() => toggleLogout()}>Logout</Button>
-                    :<Button variant="outline-light" onClick={() => toggleLogin()}>Login</Button>
+                    :<Button variant="outline-light" onClick={navToLogin}>Login</Button>
                 }   
             </Nav>
         </Navbar>

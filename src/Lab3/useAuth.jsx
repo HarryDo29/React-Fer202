@@ -4,8 +4,8 @@ import AuthContext from "./AuthProvider";
 const useAuth = () => {
     const { isAuthenticated, login, logout , user } = useContext(AuthContext);
 
-    const toggleLogin = () => {
-        login();
+    const toggleLogin = (userAccount) => {
+        login(userAccount);
     }
 
     const toggleLogout = () => {

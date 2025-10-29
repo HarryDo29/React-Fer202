@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 
 const userDefine = {
-    name: "harry.do",
-    email: "harry.do@example.com",
+    name: "Quỳnh",
+    email: "co.quynh@example.com",
     password: "password123"
 }
 
-const initialValue = {
-    status: false,
-    user: userDefine,
-    login: () => {},
-    logout: () => {}
-}
+// const initialValue = {
+//     status: false,
+//     user: userDefine,
+//     login: () => {},
+//     logout: () => {}
+// }
 
-const AuthContext = React.createContext(initialValue);
+const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -21,13 +21,13 @@ export const AuthProvider = ({ children }) => {
 
     // localStorage.setItem("user", JSON.stringify(initialValue.user));
 
-    const login = () => {
+    const login = (userAccount) => {
         // set localStorage
         localStorage.setItem("isAuthenticated", true);
-        localStorage.setItem("user", JSON.stringify(userDefine));
+        localStorage.setItem("user", JSON.stringify(userAccount));
         // cập nhật trạng thái đã đăng nhập trong useState
         setIsAuthenticated(true);
-        setUser(userDefine);
+        setUser(userAccount);
         console.log("Logged in");
     };
 
@@ -42,7 +42,6 @@ export const AuthProvider = ({ children }) => {
 
 
     useEffect(() => {
-        // localStorage.setItem('user', JSON.stringify(user));
         const storedAuth = localStorage.getItem("isAuthenticated");        
         const storedUser = localStorage.getItem("user");
         setIsAuthenticated(JSON.parse(storedAuth));

@@ -190,7 +190,31 @@ const orchids = [
     color: "Orange-red",
     origin: "Mexico",
     category: "Epidendrum"
-  }
+  },
+  {
+    "id": 18,
+    "name": "Cattleya",
+    "description": "A popular 'Queen of Orchids' with large, fragrant, and vibrant magenta flowers. Often used in corsages.",
+    "rating": 5,
+    "isSpecial": true,
+    "isNatural": true,
+    "image": "../public/images/Cattleya-warscewiczii.jpg",
+    "color": "Magenta-Purple",
+    "origin": "Colombia",
+    "category": "Cattleya"
+  },
+  {
+    "id": 19,
+    "name": "Dendrobium",
+    "description": "A 'Noble Dendrobium' that produces clusters of flowers along its cane-like stems, often with a contrasting dark center.",
+    "rating": 4,
+    "isSpecial": false,
+    "isNatural": true,
+    "image": "../public/images/Dendrobium-nobile.jpg",
+    "color": "Pink-White",
+    "origin": "Himalayas, Southeast Asia",
+    "category": "Dendrobium"
+  },
 ];
 
 export default orchids;
