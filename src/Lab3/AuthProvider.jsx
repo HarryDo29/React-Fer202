@@ -6,13 +6,6 @@ const userDefine = {
     password: "password123"
 }
 
-// const initialValue = {
-//     status: false,
-//     user: userDefine,
-//     login: () => {},
-//     logout: () => {}
-// }
-
 const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {

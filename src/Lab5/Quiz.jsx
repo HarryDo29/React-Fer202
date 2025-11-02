@@ -6,17 +6,17 @@ import { firstQues, nextQues, prevQues, lastQues, submitAns } from "./questionSl
 
 const Quiz = () => {
     const dispatch = useDispatch();
-    const { currentQuesIndex, questions, answer , score} = useSelector((state) => state.questions);
+    const { currentQuesIndex, questions} = useSelector((state) => state.questions);
     const [selectedAnswer, setSelectedAnswer] = useState(null);
 
     const curQues = questions[currentQuesIndex];
 
     useEffect(() => {
         // Reset selected answer when question changes        
-        console.log('answer', answer);
-        console.log('score', score);
+        // console.log('answer', answer);
+        // console.log('score', score);
         setSelectedAnswer(null);
-    }, [currentQuesIndex, answer, score]);
+    }, [currentQuesIndex]);
 
     const handleAnswerSelect = (index) => {
         console.log(index);
